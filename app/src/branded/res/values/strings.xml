@@ -1,0 +1,7 @@
+<resources>
+    <string name="title_app_name">Branded</string>
+    <string name="msg_main_info">This is a branded app</string>
+    <string name="msg_paid">No need to differ between paid and free</string>
+    <string name="msg_greeting_hello">Greeting</string>
+    <string name="action_go">Go</string>
+</resources>

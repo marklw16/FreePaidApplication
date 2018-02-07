@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            testCoverageEnabled = false
+            debuggable true
+            ext.enableCrashlytics = false
+        }
+    }
+
+
+//    sourceSets {
+//        // Encapsulates configurations for the main source set.
+//        main {
+//            // Changes the directory for Java sources. The default directory is
+//            // 'src/main/java'.
+//            java.srcDirs = ['src/main/java']
+//
+//            // If you list multiple directories, Gradle uses all of them to collect
+//            // sources. Because Gradle gives these directories equal priority, if
+//            // you define the same resource in more than one directory, you get an
+//            // error when merging resources. The default directory is 'src/main/res'.
+//            res.srcDirs = ['src/main/res']
+//
+//            // Note: You should avoid specifying a directory which is a parent to one
+//            // or more other directories you specify. For example, avoid the following:
+//            // res.srcDirs = ['other/res1', 'other/res1/layouts', 'other/res1/strings']
+//            // You should specify either only the root 'other/res1' directory, or only the
+//            // nested 'other/res1/layouts' and 'other/res1/strings' directories.
+//
+//            // For each source set, you can specify only one Android manifest.
+//            // By default, Android Studio creates a manifest for your main source
+//            // set in the src/main/ directory.
+//            manifest.srcFile 'src/main/AndroidManifest.xml'
+//        }
+//        realfree {
+//            java.srcDirs = ['src/realfree/java']
+//            res.srcDirs = ['src/realfree/res']
+//            manifest.srcFile 'src/realfree/AndroidManifest.xml'
+//        }
+//    }
+
+    flavorDimensions "client", "server"
+    productFlavors {
+        free {
+            applicationId "com.routematch.whitelabel.free"
+            versionName "1.0-free"
+            dimension "client"
+            // this boolean can be accessed in java classes by using BuildConfig class
+            // and now you can identify if your app is the paid version or not
+            buildConfigField "boolean", "PAID_VERSION", "false"
+        }
+
+        branded {
+            applicationId "com.rouetmatch.whitelabel.branded"
+            versionName "1.0-branded"
+            dimension "client"
+            // this boolean can be accessed in java classes by using BuildConfig class
+            // and now you can identify if your app is the paid version or not
+            buildConfigField "boolean", "PAID_VERSION", "false"
+        }
+
+        paid {
+            applicationId "com.rouetmatch.whitelabel.paid"
+            versionName "1.0-paid"
+            dimension "client"
+            buildConfigField "boolean", "PAID_VERSION", "true"
+        }
+        dev {
+            dimension "server"
+            buildConfigField "String", "ENVIRONMENT", "\"dev\""
+        }
+        qa {
+            dimension "server"
+            buildConfigField "String", "ENVIRONMENT", "\"qa\""
+        }
+        prod {
+            buildConfigField "String", "ENVIRONMENT", "\"prod\""
+            dimension "server"
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile project(":mymodule")
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support:support-annotations:23.4.0'
+}

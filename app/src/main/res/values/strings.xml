@@ -1,0 +1,8 @@
+<resources>
+    <string name="title_app_name">FreeRoutematch</string>
+    <string name="msg_main_info">This is the route match app to show how apps can be white labeled</string>
+    <string name="msg_free">This is free app</string>
+    <string name="msg_paid">This is paid app</string>
+    <string name="msg_greeting_hello">Greeting</string>
+    <string name="action_go">Go</string>
+</resources>

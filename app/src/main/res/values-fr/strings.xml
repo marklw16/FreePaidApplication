@@ -1,0 +1,5 @@
+<resources>
+    <string name="title_app_name">FreeRoutematch</string>
+    <string name="msg_main_info">Ceci est l\'application de correspondance de route pour montrer comment les applications peuvent être marquées en blanc</string>
+    <string name="msg_greeting_hello">Bonjour</string>
+</resources>

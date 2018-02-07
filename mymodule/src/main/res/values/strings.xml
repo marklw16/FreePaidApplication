@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">My Module</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="msg_module_detail">Hello from blank fragment</string>
+</resources>
